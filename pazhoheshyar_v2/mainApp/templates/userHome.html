@@ -1,0 +1,212 @@
+{% extends "master.html" %}
+
+{% block title %}
+  کارتابل کاربران
+{% endblock %}
+
+{% load static %}
+{% block content %}
+<section class="h-100 gradient-form " style="background-color: #eee;">
+  <div class="container py-5 h-100 " style="background-color: #eee;">
+    <div class="row d-flex justify-content-center align-items-center h-100 " >
+      <div class="col-xl-8">
+        <div class=" rounded-3 text-black py-5" style="background-color: #eee;">
+          <div class="row g-0 rounded-3 justify-content-center" >
+
+            <div class="col col-8 g-0" style="background-color: #fff;" >
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center ">
+                  <img src="{% static 'lotus3.png' %}" style="width: 220px;" alt="logo">
+
+
+                  <p class="text-success m-2 text-center" dir="rtl" >
+                    خوش آمدید:
+                  {{ user.firstname}} {{user.lastname}}
+
+                  </p>
+
+                  <div class="d-flex justify-content-center d-flex flex-wrap ">
+                    
+
+
+                    {% for x in thesis_adv %}
+
+                    <div class="card w-100 mb-3" style="width: 18rem;" >
+                      <div class="card-header">
+                        {{x.title}}
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">چکیده  :        {{ x.description }}  </li>
+                        <li class="list-group-item">نقش شما در پایان نامه:   استاد مشاور  </li>
+                        <li class="list-group-item">آخرین تغییر:     {{x.updated_at}}</li>
+                        <li class="list-group-item">وضعیت:     
+                          {% if x.state == "0" %}
+                          در انتظار تایید دانشجو
+                            {% elif x.state == "2" %}
+                            در انتظار تایید استاد راهنما
+                            {% elif x.state == "1" %}
+                            در انتظار تایید استاد مشاور
+                            {% elif x.state == "3" %}
+                            در انتظار تایید مدیرگروه
+                            {% elif x.state == "4" %}
+                            در انتظار کارشناس
+                            {% elif x.state == "5" %}
+                            پایان فرآیند در سامانه
+                            {% else %}
+                              خطا
+                            {% endif %}  </li>
+                        <form action="../advisor/{{ x.id }}">
+                          <button  class="btn btn-secondary btn-block fa-lg gradient-custom-2 fs-5 " type="submit"   {% if x.state != '1' %}
+                          disabled {% endif %}>بررسی    </button>
+                        </form>
+                      </ul>
+                    </div>
+
+
+
+
+
+                    
+
+
+
+                    {% endfor %}
+
+                    {% for x in thesis_sup %}
+
+                    <div class="card w-100 mb-3" style="width: 18rem;" >
+                      <div class="card-header">
+                        {{x.title}}
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">چکیده  :        {{ x.description }}  </li>
+                        <li class="list-group-item">نقش شما در پایان نامه:   استاد راهنما   </li>
+                        <li class="list-group-item">آخرین تغییر:     {{x.updated_at}}</li>
+                        <li class="list-group-item">وضعیت:     
+                          {% if x.state == "0" %}
+                          در انتظار تایید دانشجو
+                            {% elif x.state == "2" %}
+                            در انتظار تایید استاد راهنما
+                            {% elif x.state == "1" %}
+                            در انتظار تایید استاد مشاور
+                            {% elif x.state == "3" %}
+                            در انتظار تایید مدیرگروه
+                            {% elif x.state == "4" %}
+                            در انتظار کارشناس
+                            {% elif x.state == "5" %}
+                            پایان فرآیند در سامانه
+                            {% else %}
+                              خطا
+                            {% endif %}  </li>  
+                      <form action="../supervisor/{{ x.id }}">
+                        <button class="btn btn-secondary btn-block fa-lg gradient-custom-2 fs-5 " type="submit" {% if x.state != '2' %}
+                        disabled {% endif %}>بررسی    </button>
+                      </form>
+
+
+                        
+                
+                      </ul>
+                    </div>
+                    {% endfor %}
+
+                    {% for x in thesis_head %}
+
+                    <div class="card w-100 mb-3" style="width: 18rem;" >
+                      <div class="card-header">
+                        {{x.title}}
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">چکیده  :        {{ x.description }}  </li>
+                        <li class="list-group-item">نقش شما در پایان نامه:   مدیرگروه   </li>
+                        <li class="list-group-item">آخرین تغییر:     {{x.updated_at}}</li>
+                        <li class="list-group-item">وضعیت:     
+                          {% if x.state == "0" %}
+                          در انتظار تایید دانشجو
+                            {% elif x.state == "2" %}
+                            در انتظار تایید استاد راهنما
+                            {% elif x.state == "1" %}
+                            در انتظار تایید استاد مشاور
+                            {% elif x.state == "3" %}
+                            در انتظار تایید مدیرگروه
+                            {% elif x.state == "4" %}
+                            در انتظار کارشناس
+                            {% elif x.state == "5" %}
+                            پایان فرآیند در سامانه
+                            {% else %}
+                              خطا
+                            {% endif %}  </li>
+                        <form action="../head_of_department/{{ x.id }}">
+                          <button class="btn btn-secondary btn-block fa-lg gradient-custom-2 fs-5 " type="submit" {% if x.state != '3' %}
+                          disabled {% endif %}>بررسی    </button>
+                        </form>
+                      </ul>
+                    </div>
+                    {% endfor %}
+
+                    {% for x in thesis_kar %}
+
+                    <div class="card w-100 mb-3" style="width: 18rem;" >
+                      <div class="card-header">
+                        {{x.title}}
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">چکیده  :        {{ x.description }}  </li>
+                        <li class="list-group-item">نقش شما در پایان نامه:   کارشناس   </li>
+                        <li class="list-group-item">آخرین تغییر:     {{x.updated_at}}</li>
+                        <li class="list-group-item">وضعیت:     
+                          {% if x.state == "0" %}
+                          در انتظار تایید دانشجو
+                            {% elif x.state == "2" %}
+                            در انتظار تایید استاد راهنما
+                            {% elif x.state == "1" %}
+                            در انتظار تایید استاد مشاور
+                            {% elif x.state == "3" %}
+                            در انتظار تایید مدیرگروه
+                            {% elif x.state == "4" %}
+                            در انتظار کارشناس
+                            {% elif x.state == "5" %}
+                            پایان فرآیند در سامانه
+                            {% else %}
+                              خطا
+                            {% endif %}  </li>
+                        <form action="../karshenas/{{ x.id }}">
+                          <button class="btn btn-secondary btn-block fa-lg gradient-custom-2 fs-5 " type="submit" {% if x.state != '4' %}
+                          disabled {% endif %}>بررسی    </button>
+                        </form>
+                      </ul>
+                    </div>
+                    {% endfor %}
+
+
+
+
+
+
+
+
+                  </div> 
+
+
+                </div>
+
+                <div class="d-flex justify-content-center">
+                <a href="/" class="btn btn-primary m-3 btn-block fa-lg gradient-custom-2 mb-3 mt-3" type="button">خروج از سیستم  </a>
+                </div>
+              </div>
+            </div>
+            
+
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

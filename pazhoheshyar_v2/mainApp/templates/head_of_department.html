@@ -1,0 +1,115 @@
+{% extends "master.html" %}
+
+{% block title %}
+  مدیرگروه 
+{% endblock %}
+{% load static %}
+
+{% block content %}
+<section class="h-100 gradient-form " style="background-color: #eee;">
+  <div class="container py-5 h-100 " style="background-color: #eee;">
+    <div class="row d-flex justify-content-center align-items-center h-100 " >
+      <div class="col-xl-8">
+        <div class=" rounded-3 text-black py-5" style="background-color: #eee;">
+          <div class="row g-0 rounded-3 justify-content-center" >
+
+            <div class="col col-8 g-0" style="background-color: #fff;" >
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="{% static 'lotus3.png' %}" style="width: 220px;" alt="logo">
+
+
+
+                  <div class="card w-100 mb-3" style="width: 18rem;" >
+                    <div class="card-header">
+                      {{ thesis.title }}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"> استاد راهنما:     {{ thesis.supervisor.firstname }}  {{ thesis.supervisor.lastname }}</li>
+                      <li class="list-group-item"> استاد مشاور:      {{ thesis.advisor.firstname }} {{ thesis.advisor.lastname }} </li>
+                      <li class="list-group-item">دانشجو:      {{ thesis.student.firstname }}   {{ thesis.student.lastname }}   </li>
+                      <li class="list-group-item">چکیده پایان نامه:         {{ thesis.description }}</li>
+
+                      <li class="list-group-item">وضعیت:     {{ state }} </li>
+                    
+                    </ul>
+                  </div>
+                  <p class=" m-2 text-right" dir="rtl">داور منتخب اول را از بین داور های پیشنهادی استاد راهنما انتخاب کنید</P>
+                    <div class="d-flex justify-content-center " dir="rtl">
+                    
+                    <div class="row m-4">
+
+                      <form method="post" action="/head_of_department/{{thesis.id}}">
+                        {% csrf_token %}
+                      <div class="form-group">
+                      
+                        <select class="form-control m-1" name="davar1" id="exampleFormControlSelect4" dir="rtl" required>
+                          <option value="" selected disabled> داور منتخب اول را انتخاب کنید</option>
+
+                          <option value="{{thesis.proposal_davar1.user_id}}"> {{ thesis.proposal_davar1.firstname }} {{ thesis.proposal_davar1.lastname }}</option>
+                          <option value="{{thesis.proposal_davar2.user_id}}"> {{ thesis.proposal_davar2.firstname }} {{ thesis.proposal_davar2.lastname }}</option>
+                          <option value="{{thesis.proposal_davar3.user_id}}"> {{ thesis.proposal_davar3.firstname }} {{ thesis.proposal_davar3.lastname }}</option>
+                          <option value="{{thesis.proposal_davar4.user_id}}"> {{ thesis.proposal_davar4.firstname }} {{ thesis.proposal_davar4.lastname }}</option>
+
+                    
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                      
+                        <select class="form-control m-1" name="davar2" id="exampleFormControlSelect4" dir="rtl" required>
+                          <option value="" selected disabled> داور منتخب دوم را انتخاب کنید</option>
+
+                          <option value="{{thesis.proposal_davar1.user_id}}"> {{ thesis.proposal_davar1.firstname }} {{ thesis.proposal_davar1.lastname }}</option>
+                          <option value="{{thesis.proposal_davar2.user_id}}"> {{ thesis.proposal_davar2.firstname }} {{ thesis.proposal_davar2.lastname }}</option>
+                          <option value="{{thesis.proposal_davar3.user_id}}"> {{ thesis.proposal_davar3.firstname }} {{ thesis.proposal_davar3.lastname }}</option>
+                          <option value="{{thesis.proposal_davar4.user_id}}"> {{ thesis.proposal_davar4.firstname }} {{ thesis.proposal_davar4.lastname }}</option>
+
+                        </select>
+                      </div>
+
+
+
+                  </div>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <a href="{{thesis.pdf_file.url}}" class="btn btn-primary m-3  active" role="button" aria-pressed="true"> دانلود  </a>
+             
+                
+                  <button class="btn btn-primary m-3 btn-block fa-lg gradient-custom-2 mb-3 mt-3" name='OK' type="submit" value="1" >  تایید     </button>
+                   </form>
+                <form method="post" action="/head_of_department/{{thesis.id}}">
+                  {% csrf_token %}
+                  <button class="btn btn-primary m-3 btn-block fa-lg gradient-custom-2 mb-3 mt-3" name='notOK'type="submit" value="2">  عدم تایید     </button>
+                </form>  
+                <form method="post" action="/head_of_department/{{thesis.id}}">
+                  {% csrf_token %}
+                  <button class="btn btn-primary m-3 btn-block fa-lg gradient-custom-2 mb-3 mt-3" name="back" type="submit" value="3">  بازگشت     </button>
+                
+                </form>
+
+
+
+              </div>
+              
+              <p class="text-info m-2 text-center" dir="rtl">لطفا پس از بررسی در جلسه گروه   پایان نامه را تایید کنید </P>
+                  
+              </div>
+            </div>
+            
+
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

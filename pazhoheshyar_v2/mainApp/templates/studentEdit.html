@@ -1,0 +1,67 @@
+{% extends "master.html" %}
+
+{% block title %}
+  ویرایش پایان نامه 
+{% endblock %}
+{% load static %}
+
+{% block content %}
+<section class="h-100 gradient-form " style="background-color: #eee;">
+  <div class="container py-5 h-100 " style="background-color: #eee;">
+    <div class="row d-flex justify-content-center align-items-center h-100 " >
+      <div class="col-xl-8">
+        <div class=" rounded-3 text-black py-5" style="background-color: #eee;">
+          <div class="row g-0 rounded-3 justify-content-center" >
+
+            <div class="col col-8 g-0" style="background-color: #fff;" >
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="{% static 'lotus3.png' %}" style="width: 220px;" alt="logo">
+                  <form method="post" action="/studentEdit/">
+                    {% csrf_token %}
+
+                    <div class="form-group p-1">
+                      <label for="exampleFormControlInput1" class="pb-2 ">عنوان پایان نامه </label>
+                      <input type="text" name="title"   class="form-control" id="exampleFormControlInput1" dir="rtl">
+                    </div>
+
+ 
+                    <div class="form-group m-3 p-1">
+                      <label for="exampleFormControlTextarea1" class="pb-2 " >چکیده</label>
+                      <textarea class="form-control " name="description" id="exampleFormControlTextarea1" rows="3" dir="rtl"></textarea>
+                    </div>
+
+                    <div class="form-group  form-control-sm ">
+                      
+                      <label for="exampleFormControlFile1" class=" "> فایل پایان نامه</label>
+                      <p></P>
+                      <input type="file" name="pdf_file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+
+
+                  
+                </div>
+
+                <div class="d-flex justify-content-center mt-3">
+                <button class="btn btn-primary  btn-block fa-lg gradient-custom-2 mx-2 mb-1 mt-3" type="submit">بارگذاری  </button>
+                <a href="/studentHome" class="btn btn-primary mx-2 btn-block fa-lg gradient-custom-2 mb-1 mt-3" type="button">انصراف    </a>
+                
+              </div>
+              </form>
+              </div>
+            </div>
+            
+
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

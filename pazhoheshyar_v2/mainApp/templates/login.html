@@ -1,0 +1,56 @@
+{% extends "master.html" %}
+
+{% block title %}
+  ورود به سیستم
+{% endblock %}
+
+{% load static %}
+{% block content %}
+<section class="h-100 gradient-form " style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 " >
+      <div class="col-xl-8">
+        <div class=" rounded-3 text-black py-3" style="background-color: #eee;height: 100vh">
+          <div class="row g-0 rounded-3 justify-content-center" >
+            <div class="col col-8 g-0" style="background-color: #fff;" >
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="{% static 'lotus3.png' %}" style="width: 220px;" alt="logo">
+                  <h4 class="mt-1 mb-5 pb-1">سامانه پژوهشیار</h4>
+                </div>
+
+                <form method="post">
+
+                  {% csrf_token %}
+                  <div class="form-outline mb-4">
+                    <input type="text" id="username" name="username"class="form-control"
+                      placeholder="شماره کاربری" dir='rtl'/>
+
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="رمز عبور"dir='rtl' />
+                    
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    
+                    <span class="text-muted font-italic " >در صورتی که مشغول به تحصیل می باشید شماره کاربری شما همان شماره دانشجویی شما می باشد</span>
+                    <p class="text-danger h6 my-3" > {{ Error }} </P>
+                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 mt-3" type='submit'>ورود به سیستم</button>
+                  
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
