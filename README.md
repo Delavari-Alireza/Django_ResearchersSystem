@@ -1,4 +1,4 @@
-# Project "Researcher System"
+# Project "Pazhoheshyar System"
 
 ![License](https://img.shields.io/badge/License-[License]-brightgreen.svg)
 
