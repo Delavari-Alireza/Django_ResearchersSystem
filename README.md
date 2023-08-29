@@ -25,7 +25,7 @@ To run the project on your local system, follow these steps:
 
 ## License
 
-This project is licensed under the [License] license. For more information, refer to the license file.
+This project is licensed under the MIT license. For more information, refer to the license file.
 
 ## Acknowledgments
 
