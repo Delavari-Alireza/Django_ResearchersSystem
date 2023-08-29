@@ -18,7 +18,7 @@ The "Pazhoheshyar System" project is developed using the Python programming lang
 
 To run the project on your local system, follow these steps:
 
-1. Clone this repository: `git clone https://github.com/yourusername/your-repo.git`
+1. Clone this repository: `git clone https://github.com/Alireza499/django_pazhoheshyar.git`
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Start the Django server: `python manage.py runserver`
 4. Open your web browser and navigate to `http://localhost:8000` to access the system.
