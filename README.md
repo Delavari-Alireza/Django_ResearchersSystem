@@ -1,6 +1,6 @@
 # Project "Pazhoheshyar System"
 
-![License](https://img.shields.io/badge/License-[License]-brightgreen.svg)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Introduction
 
